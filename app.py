@@ -4,7 +4,7 @@ from flask import Flask
 from flask_jwt import JWT
 from flask_restful import Api
 
-# from management.database import db
+from management.database import db
 from management.security import authenticate, identity
 
 from resources.item import ItemResource, ItemListResource
@@ -25,10 +25,10 @@ api.add_resource(StoreListResource, "/stores")
 api.add_resource(UserRegisterResource, "/register")
 
 if __name__ == "__main__":
-    # db.init_app(app)
-    #
-    # @app.before_first_request
-    # def create_tables():
-    #     db.create_all()
+    db.init_app(app)
+
+    @app.before_first_request
+    def create_tables():
+        db.create_all()
 
     app.run(port=5000, debug=True)
