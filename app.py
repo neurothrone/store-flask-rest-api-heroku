@@ -12,9 +12,13 @@ from resources.store import StoreResource, StoreListResource
 from resources.user import UserRegisterResource
 
 app = Flask(__name__)
-postgresql_url = os.environ.get("DATABASE_URL").replace("postgres://", "postgresql://")
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(postgresql_url,
-                                                       "sqlite:///data.db")
+
+try:
+    database_url = os.environ.get("DATABASE_URL").replace("postgres://", "postgresql://")
+except OSError:
+    database_url = "sqlite:///data.db"
+
+app.config["SQLALCHEMY_DATABASE_URI"] = database_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.secret_key = os.urandom(24)
 api = Api(app)
