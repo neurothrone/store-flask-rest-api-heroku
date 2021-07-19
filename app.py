@@ -4,9 +4,8 @@ from flask import Flask
 from flask_jwt import JWT
 from flask_restful import Api
 
-from src.data.constants import DATABASE_PATH
-from src.management.database import db
-from src.management.security import authenticate, identity
+from management.database import db
+from management.security import authenticate, identity
 
 from resources.item import ItemResource, ItemListResource
 from resources.store import StoreResource, StoreListResource
@@ -15,7 +14,7 @@ from resources.user import UserRegisterResource
 
 if __name__ == "__main__":
     app = Flask(__name__)
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DATABASE_PATH}"
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///data.db"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.secret_key = os.urandom(24)
     api = Api(app)

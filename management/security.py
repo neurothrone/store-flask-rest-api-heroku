@@ -1,4 +1,4 @@
-from src.models.user import UserModel
+from models.user import UserModel
 
 
 def authenticate(username: str, password: str) -> UserModel or None:

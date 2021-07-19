@@ -1,4 +1,3 @@
-DATABASE_PATH = "../data/data.db"  # from app.py location
 TABLE_ITEMS = "items"
 TABLE_USERS = "users"
 

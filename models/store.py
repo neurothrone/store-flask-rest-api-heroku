@@ -1,4 +1,4 @@
-from src.management.database import db
+from management.database import db
 
 
 class StoreModel(db.Model):

@@ -1,7 +1,7 @@
 from flask_jwt import jwt_required
 
-from src.models.store import StoreModel
-from src.resources.base import BaseResource
+from models.store import StoreModel
+from resources.base import BaseResource
 
 
 class StoreListResource(BaseResource):
