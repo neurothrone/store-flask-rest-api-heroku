@@ -12,9 +12,8 @@ from resources.store import StoreResource, StoreListResource
 from resources.user import UserRegisterResource
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(key="DATABASE_URL",
-                                                       default="sqlite:///data.db")
-# postgres://apjfyxhhucmckn:4f2092b13a06d40de070902250f2045d519d321b2eec2f72d472fa5e616407fc@ec2-34-240-75-196.eu-west-1.compute.amazonaws.com:5432/d6kntea1fddel8
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL",
+                                                       "sqlite:///data.db")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.secret_key = os.urandom(24)
 api = Api(app)
